@@ -1,4 +1,16 @@
----
+---use Net::Facebook::Oauth2;
+
+my $fb = Net::Facebook::Oauth2->new(
+    application_id     => 'your_application_id', 
+    application_secret => 'your_application_secret',
+    callback           => 'http://yourdomain.com/facebook/callback'
+);
+
+# get the authorization URL for your application
+my $url = $fb->get_authorization_url(
+    scope   => [ 'public_profile', 'email', 'user_posts', 'manage_pages' ],
+    display => 'page'
+);
 title: Legacy GitHub Services to GitHub Apps Migration Guide
 layout: en
 redirect_from:
